@@ -1,0 +1,6 @@
+<%= simple_form_for [@list, @bookmark] do |f| %>
+  <%= f.input :comment %>
+  <%= f.association :movies, as: :check_boxes %>
+  <%= f.submit class: 'btn btn-primary my-3' %>
+<% end %>
+<br>
