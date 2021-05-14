@@ -1,5 +1,12 @@
 <h2><%= @list.name %></h2>
-<p> <%= cl_image_tag @list.photo.key,
-      width: 400, height: 300, crop: :fill) %> </p>
+<p> <%= cl_image_tag @list.photo.key, width: 200, height: 150, crop: :fill %> </p>
 <br>
+<h3>Add a movie to your <%= @list.name %> list</h3>
+  <%= simple_form_for [@list, @bookmark] do |f| %>
+    <%= f.input :comment, placeholder: 'Enter a comment about the movie' %>
+    <%= f.association :movie, prompt: 'Select a movie', as: :check_boxes %>
+    <%= f.submit class: 'btn btn-primary' %>
+  <% end %>
+<br>
+<p> <%= link_to 'Detete this List', list_path(@list), method: :delete, data: { confirm: 'Are you sure you want to delete this list?' } %> </p>
 <p> <%= link_to "Return to Movies List", lists_path %> </p>
